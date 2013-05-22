@@ -1,0 +1,18 @@
+<!DOCTYPE html><html lang="en"><head><title>router</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content=""><meta name="groc-document-path" content="router"><meta name="groc-project-path" content="coffee/router.coffee"><link rel="stylesheet" type="text/css" media="all" href="assets/style.css"><script type="text/javascript" src="assets/behavior.js"></script><body><div id="meta"><div class="file-path">coffee/router.coffee</div></div><div id="document"><div class="segment"></div><div class="segment"><div class="comments"><div class="wrapper"><h1 id="le-router">Le Router</h1></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p><em>Handles incoming requests, pulls out data, fire the appropriate handlers</em></p></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>Include some shit</p></div></div><div class="code"><div class="wrapper"><span class="nx">define</span> <span class="p">[</span>
+
+  <span class="s">&#39;jquery&#39;</span><span class="p">,</span>
+  <span class="s">&#39;underscore&#39;</span><span class="p">,</span>
+  <span class="s">&#39;backbone&#39;</span>
+
+<span class="p">],</span> <span class="nf">($, _, Backbone) -&gt;</span>
+  </div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>New router</p></div></div><div class="code"><div class="wrapper">  <span class="nv">AppRouter = </span><span class="nx">Backbone</span><span class="p">.</span><span class="nx">Router</span><span class="p">.</span><span class="nx">extend</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>Define some routes</p></div></div><div class="code"><div class="wrapper">    <span class="nv">routes:</span>
+      <span class="s">&#39;*actions&#39;</span><span class="o">:</span><span class="s">&#39;defaultAction&#39;</span>
+
+  <span class="nv">initialize = </span><span class="nf">-&gt;</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>New app router</p></div></div><div class="code"><div class="wrapper">    <span class="nv">app_router = </span><span class="k">new</span> <span class="nx">AppRouter</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>If we don't know what's up, just log the attempted action</p></div></div><div class="code"><div class="wrapper">    <span class="nx">app_router</span><span class="p">.</span><span class="nx">on</span> <span class="s">&#39;route:defaultAction&#39;</span><span class="p">,</span> <span class="nf">(actions) -&gt;</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="s">&#39;No route: &#39;</span> <span class="o">+</span> <span class="nx">actions</span>
+
+    <span class="nx">Backbone</span><span class="p">.</span><span class="nx">history</span><span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="nx">app_router</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>Return the init function </p></div></div><div class="code"><div class="wrapper">  <span class="k">return</span><span class="p">{</span>
+    <span class="nv">initialize: </span><span class="nx">initialize</span>
+  <span class="p">}</span></div></div></div></div></body></html>

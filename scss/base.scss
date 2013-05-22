@@ -1,0 +1,208 @@
+
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900);
+
+$background-color: #ecebe7;
+$dark-text: #262626;
+$medium-text: #8d8d8d;
+$light-text: #f9f9f9;
+
+$green: #4ca458;
+$blue: #5b92bb;
+$gold: #e4a013;
+$orange: #e4701c;
+
+
+// FONTS
+@mixin text-1{
+	color: $dark-text;
+	font-size: 36px;
+	font-weight: 400;
+}
+
+@mixin text-2{
+	color: $medium-text;
+	font-size: 24px;
+	font-weight: 400;
+}
+
+h1{
+	@include text-1;
+}
+
+h2{
+	@include text-2;
+}
+
+// ICONS
+.bump-icon{
+	margin-right: 15px;
+}
+
+.display-icon{
+	font-size: 20pt;
+	margin-right: 10px;
+	vertical-align: middle;
+	
+	// width: 100px;
+}
+
+.display-icon-container{
+	width: 50px;
+	height: 50px;
+	float: left;
+	text-align: center;
+	color: $dark-text;
+
+	&:hover{
+		color: $green;
+		cursor: pointer;
+		text-decoration: none;
+	}
+}
+
+// DIVIDERS
+hr{
+	color: $medium-text;
+	// border-top: 1px solid $light-text;
+}
+
+// BUTTONS
+@mixin button($color){
+	float: left;
+	$padding-x: 60px;
+	$padding-y: 20px;
+	padding-left: $padding-x;
+	padding-right: $padding-x;
+	padding-top: $padding-y;
+	padding-bottom: $padding-y;
+	font-size: 18px;
+	color: $light-text;
+
+	&:hover{
+		text-decoration: none;
+		background-color: darken($color,10%);
+		color: $light-text;
+		cursor: pointer;
+	}
+}
+
+.button-small{
+	padding-left: 20px !important;
+	padding-right: 20px !important;
+	padding-top: 10px !important;
+	padding-bottom: 10px !important;
+	font-size: 12pt !important;
+	// width: 100px;
+}
+
+.button-large{
+	width: 275px;
+	height: 70px;
+}
+
+.button-green{
+	@include button($green);
+	background-color: $green;
+}
+
+// LAYOUT
+
+body{
+	background-color: $background-color;
+	font-family: Lato;
+	-webkit-font-smoothing: antialiased;
+	padding-top: 50px;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.container{
+	width: 1100px;
+}
+
+// PHONE
+$screenWidth: 277px;
+$screenHeight: 475px;
+$controlHeight: 61px;
+
+
+.iPhone{
+	width: 339px;
+	height: 718px;
+	background: url(../img/iPhone.png);
+	position: relative;
+}
+
+#phoneScreen{
+	opacity: 0;
+	position: relative;
+	width: $screenWidth;
+	height: $screenHeight;
+	background-color: $background-color;
+	top: 120px;
+	left: 28px;
+	overflow: scroll;
+}
+
+@mixin control($color){
+	width: $screenWidth;
+	height: $controlHeight;
+	background-color: $color;
+	float: left;
+	
+
+	span{
+		color: $light-text;
+		font-size: 31px;
+		float: left;
+		width: 48px;
+		box-sizing: border-box;
+		padding-top: 15px;
+		// padding-left: 18px;
+		margin-left: 18px;
+		margin-right: 0px;
+	}
+
+	.control-name{
+		float: left;
+		font-size: 16px;
+		color: $light-text;
+		margin-top: 11px;
+		margin-bottom: 0px;
+		width: 200px;
+	}
+
+	.control-description{
+		float: left;
+		font-size: 12px;
+		color: $light-text;
+		margin-top: 0px;
+		margin-bottom: 0px;
+		width: 200px;
+	}
+
+	&:hover{
+		background-color: darken($color,10%);
+		cursor: move;
+	}
+}
+
+.control-switch{
+	@include control($blue);
+}
+
+.control-accelerometer{
+	@include control($green);
+}
+
+.control-touchpad{
+	@include control($gold);
+}
+
+.control-button{
+	@include control($orange)
+}

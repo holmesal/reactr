@@ -1,0 +1,43 @@
+@import 'base';
+
+// LANDING
+
+h1.landing{
+	margin-top: 100px;
+}
+
+h2.landing{
+	margin-top: 50px;
+}
+
+#get-started{
+	margin-top: 60px;
+}
+
+// PHONE
+
+#dragHere{
+	position: relative;
+	color: $medium-text;
+	text-align: center;
+	font-size: 18px;
+	top: 40%;
+	margin: 0;
+}
+
+#controlBank{
+	margin-top: 50px;
+	overflow: auto;
+	text-align: center;
+}
+
+#launchDiv{
+	clear: both;
+	margin-top: 320px;
+}
+
+// EDIT CONTROL
+.save-button{
+	float: right;
+	margin-top: 13px;
+}
