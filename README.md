@@ -41,9 +41,11 @@ What have you done so far?
 
 The builder frontend is just about ready to beta. The backend is lagging, but it'll be quick (there's not much there). The controller frontend skeleton is there, as are the libraries for touch interactions / accelerometers / location, but the individual controls need some design love.
 
+The frontend is written in Backbone.js. It uses socket.io (realtime) to talk to a node.js server that takes care of state and pushing the data to the device.
+
 I'm launching it on Electric Imp first, because they're the only platform that provides a URL to post data to, out-of-the-box. They're also an excellent startup founded by ex- gmail and iPhone product people. Adding other platforms is not much of a challenge on the Reactr side - it's more that to make Reactr really accessible to, say, the Arduino community, someone should really write an Arduino library.
 
-Check out the (builder demo)[http://www.alonsoholmes.com/reactr] if you like - at your own risk if you're not in Google Chrome.
+Check out the [builder demo](http://www.alonsoholmes.com/reactr) if you like - at your own risk if you're not in Google Chrome.
 
 
 Why do you want a designer?
@@ -60,3 +62,6 @@ How can I get in touch?
 -------------------
 
 Email's good. siralonsoholmes@gmail.com
+Or just send a raven.
+
+*-Alonso*
