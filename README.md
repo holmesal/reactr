@@ -36,7 +36,7 @@ Mostly because it's awesome. But there's also some pain here - whenever I found 
 It's also a huge enabler. Reactr basically gives everyone that works with electronics a quick, easy way to tap into all of the sensors and capabilities of the smartphone. That's a lot of people with a new set of lego bricks.  
 
 
-What have you done so far?
+What's built?
 ------------------
 
 The builder frontend is just about ready to beta. The backend is lagging, but it'll be quick (there's not much there). The controller frontend skeleton is there, as are the libraries for touch interactions / accelerometers / location, but the individual controls need some design love.
