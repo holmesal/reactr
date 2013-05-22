@@ -14,7 +14,7 @@ define [
 	'collections/phoneCollection'
 	'text!templates/editPane.html'
 	'models/controller'
-	'views/PrelaunchView'
+	'views/prelaunchView'
 
 ], ($, jqueryui, _, Backbone, PhoneView, Handlebars, PhoneCollection, EditPaneTemplate, ControllerModel, PrelaunchView) ->
 	
