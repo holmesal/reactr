@@ -11,15 +11,18 @@ define [
 	'jquery'
 	'underscore'
 	'backbone'
-	'views/mainView'
+	'build/views/mainView'
+	'play/models/controllerModel'
+	'play/views/controllerView'
 
-], ($, _, Backbone, MainView) ->
+], ($, _, Backbone, MainView, ControllerModel, ControllerView) ->
 	
 	# New router
 	AppRouter = Backbone.Router.extend
 		# Define some routes
 		routes:
 			'':'landingRoute'
+			'controller':'controllerRoute'
 			'*actions':'defaultAction'
 
 	initialize = ->
@@ -29,15 +32,19 @@ define [
 
 		app_router.on 'route:landingRoute', ->
 			console.log 'landingRoute!'
-			window.app.mainView = new MainView()
+			window.app.views.main = new MainView
+
+		app_router.on 'route:controllerRoute', ->
+			console.log 'controller route!'
+			window.app.models.controller = new ControllerModel
+			window.app.views.controller = new ControllerView
+				model: window.app.models.controller
 
 		# If we don't know what's up, just log the attempted action
 		app_router.on 'route:defaultAction', (actions) ->
 			console.log 'No route: ' + actions
 
 		Backbone.history.start()
-
-		console.log app_router
 
 
 	# Return the init function 

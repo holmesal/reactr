@@ -7,7 +7,8 @@
       underscore: 'libs/underscore/underscore.min',
       backbone: 'libs/backbone/backbone.min',
       handlebars: 'libs/handlebars/handlebars',
-      text: 'libs/requirejs-text/text'
+      text: 'libs/requirejs-text/text',
+      hammer: 'libs/hammer/hammer.min'
     },
     shim: {
       backbone: {
@@ -19,6 +20,9 @@
       },
       handlebars: {
         exports: 'Handlebars'
+      },
+      hammer: {
+        exports: 'Hammer'
       }
     }
   });

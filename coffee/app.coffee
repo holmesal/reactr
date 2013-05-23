@@ -11,10 +11,9 @@ define [
 	'jquery',
 	'underscore',
 	'backbone',
-	'router',
-	'models/controls/switch'
+	'router'
 
-], ($, _, Backbone, Router, SwitchControl) ->
+], ($, _, Backbone, Router) ->
 
 	initialize = ->
 		# Initialize the router

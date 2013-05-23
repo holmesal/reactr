@@ -9,9 +9,9 @@ define [
 	'underscore'
 	'backbone'
 	'handlebars'
-	'models/controls/switch'
+	'build/models/controls/switch'
 	'text!templates/control.html'
-	'views/editControlView'
+	'build/views/editControlView'
 
 ], ($, _, Backbone, Handlebars, SwitchModel, ControlTemplate, EditControlView) ->
 	

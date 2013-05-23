@@ -10,7 +10,7 @@ define [
 	'backbone'
 	'handlebars'
 	'text!templates/main.html'
-	'views/editPaneView'
+	'build/views/editPaneView'
 
 ], ($, _, Backbone, Handlebars, MainTemplate, EditPaneView) ->
 	

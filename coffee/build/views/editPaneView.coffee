@@ -9,12 +9,12 @@ define [
 	'jqueryui'
 	'underscore'
 	'backbone'
-	'views/phoneView'
+	'build/views/phoneView'
 	'handlebars'
-	'collections/phoneCollection'
+	'build/collections/phoneCollection'
 	'text!templates/editPane.html'
-	'models/controller'
-	'views/prelaunchView'
+	'build/models/controller'
+	'build/views/prelaunchView'
 
 ], ($, jqueryui, _, Backbone, PhoneView, Handlebars, PhoneCollection, EditPaneTemplate, ControllerModel, PrelaunchView) ->
 	

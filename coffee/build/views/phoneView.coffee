@@ -8,7 +8,7 @@ define [
 	'jquery'
 	'underscore'
 	'backbone'
-	'views/controlView'
+	'build/views/controlView'
 
 ], ($, _, Backbone, ControlView) ->
 	

@@ -11,6 +11,7 @@ require.config
 		backbone: 'libs/backbone/backbone.min'
 		handlebars: 'libs/handlebars/handlebars'
 		text: 'libs/requirejs-text/text'
+		hammer: 'libs/hammer/hammer.min'
 
 	shim:
 		backbone:
@@ -20,6 +21,8 @@ require.config
 			exports: '_'
 		handlebars:
 			exports: 'Handlebars'
+		hammer:
+			exports: 'Hammer'
 
 
 # Load app.js via require

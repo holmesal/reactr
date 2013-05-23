@@ -8,7 +8,7 @@ define [
 	'jquery'
 	'underscore'
 	'backbone'
-	'models/controls/base'
+	'build/models/controls/base'
 
 ], ($, _, Backbone, BaseControl) ->
 	
