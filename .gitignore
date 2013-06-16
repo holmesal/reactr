@@ -1,9 +1,9 @@
-.sass-cache
+*.sass-cache
 temp/
 reallyold/
 mockups/
 landing/
 backup/
-.psd
-.sublime-workspace
-.sublime-project
+*.psd
+*.sublime-workspace
+*.sublime-project
