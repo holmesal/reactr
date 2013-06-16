@@ -1,0 +1,38 @@
+<div class="sidebar-inner">
+    <img class="sidebar-logo" src="images/logo.png"/>
+    <p class="sidebar-title">Reactr</p>
+    <hr class="sidebar">
+
+    {{#if user.loggedin}}
+    <p class="sidebar-header">YOUR CONTROLLERS</p>
+    <div class="sidebar-controllers">
+        <a class="sidebar-controller">
+            <span>reactr.co/pockettanks</span>
+            <i class="icon-double-angle-right pull-right"></i>
+        </a>
+        <a class="sidebar-controller">
+            <span>reactr.co/launchpad</span>
+            <i class="icon-double-angle-right pull-right"></i>
+        </a>
+        <a class="sidebar-controller">
+            <span>reactr.co/alonso123</span>
+            <i class="icon-double-angle-right pull-right"></i>
+        </a>
+        <a class="sidebar-controller">
+            <span>reactr.co/arduinopizza</span>
+            <i class="icon-double-angle-right pull-right"></i>
+        </a>
+    </div>
+
+    <a class="sidebar-newcontrol">New Controller</a>
+
+    {{else}}
+
+    <h1>login!</h1>
+
+    {{/if}}
+
+    <p>bottom links</p>
+
+
+</div>

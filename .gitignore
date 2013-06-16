@@ -1,3 +1,7 @@
 .sass-cache
-/reallyold
+temp/
+reallyold/
+mockups/
+landing/
 .psd
+.sublime-workspace
