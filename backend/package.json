@@ -1,0 +1,19 @@
+{
+  "name": "ReactrBackend",
+  "version": "0.0.1",
+  "dependencies": {
+    "express.io": "1.1.x",
+    "mongoose": "3.6.x",
+    "mongo-express": "0.18.x"
+  },
+  "subdomain": "reactr",
+  "domains": [
+    "api.reactr.co"
+  ],
+  "scripts": {
+    "start": "app.js"
+  },
+  "engines": {
+    "node": "0.8.x"
+  }
+}

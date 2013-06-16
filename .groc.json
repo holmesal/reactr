@@ -3,6 +3,6 @@
   			"coffee/*.coffee",
   			"coffee/**/*.coffee",
   			"coffee/**/**/*.coffee"],
-  "github": true,
+  "github": false,
   "repository-url": "https://github.com/holmesal/impstrap"
 }
