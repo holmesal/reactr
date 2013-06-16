@@ -1,0 +1,55 @@
+@import 'sass-bootstrap/lib/bootstrap';
+@import 'compass';
+// @import url(http://fonts.googleapis.com/css?family=Lato:200,300,400);
+
+// Colors
+$bgcolor: black;
+$textcolor: white;
+
+$green-start: black;
+$green-end: white;
+$teal-start: black;
+$teal-end: white;
+$red-start: black;
+$red-end: white;
+$blue-start: black;
+$blue-end: white;
+$orange-start: black;
+$orange-end: white;
+
+// Width calc mixin
+@mixin calc($property, $expression) { 
+  #{$property}: -moz-calc(#{$expression}); 
+  #{$property}: -o-calc(#{$expression}); 
+  #{$property}: -webkit-calc(#{$expression}); 
+  #{$property}: calc(#{$expression}); 
+} 
+
+// @include background-image(linear-gradient(white, #aaaaaa));
+
+.controller{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: $bgcolor;
+}
+
+.control-container{
+	@include box-sizing(border-box);
+	width: 50%;
+	height: 50%;
+	float: left;
+	overflow: auto;
+	background-color: black;
+	padding: 3px;
+}
+
+.control{
+	@include box-sizing(border-box);
+	width: 100%;
+	height: 100%;
+	background-color: white;
+	border-radius: 10px;
+}
