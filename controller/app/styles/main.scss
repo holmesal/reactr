@@ -19,15 +19,38 @@ $orange-end: white;
 
 // Width calc mixin
 @mixin calc($property, $expression) { 
-  #{$property}: -moz-calc(#{$expression}); 
-  #{$property}: -o-calc(#{$expression}); 
-  #{$property}: -webkit-calc(#{$expression}); 
-  #{$property}: calc(#{$expression}); 
+	#{$property}: -moz-calc(#{$expression}); 
+	#{$property}: -o-calc(#{$expression}); 
+	#{$property}: -webkit-calc(#{$expression}); 
+	#{$property}: calc(#{$expression}); 
 } 
+
+@mixin notextselect{
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+html{
+	@include notextselect;
+	background-color: black;
+}
 
 // @include background-image(linear-gradient(white, #aaaaaa));
 
-.controller{
+#view{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+}
+
+.pane{
 	width: 100%;
 	height: 100%;
 	position: absolute;

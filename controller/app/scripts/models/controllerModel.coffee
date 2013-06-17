@@ -13,11 +13,8 @@ define [
 	'socketio'
 	'models/controlModel'
 	'collections/controls'
-	'views/controls/switch'
-	'views/controls/button'
-	'views/controls/touchpad'
 
-], ($, _, Backbone, backboneiobind, io, ControlModel, ControlsCollection, SwitchView, ButtonView, TouchpadView) ->
+], ($, _, Backbone, backboneiobind, io, ControlModel, ControlsCollection) ->
 	
 	ControllerModel = Backbone.Model.extend
 
@@ -39,7 +36,8 @@ define [
 			@fetch
 				success: (model,response,options) =>
 					# Make a new collection, and pass in the "controls" attribute
-					@collection = new ControlsCollection response.controls
+					@collection = new ControlsCollection response.controls,
+						model: ControlModel
 					# Hack - unset the 'controls' attribute that was automatically
 					@unset 'controls'
 					

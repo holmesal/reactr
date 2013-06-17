@@ -16,7 +16,7 @@ define [
 	
 	BaseView = Backbone.View.extend
 
-		className: 'control'
+		className: 'control-container'
 
 		template: handlebars.compile ControlTemplate
 
@@ -49,12 +49,12 @@ define [
 				# 'margin-top':@options.controldims.height/2 - @options.controldims.icon
 
 		grow: ->
-			alert 'hey'
-			@$el.animate
-				top: 0
-				bottom: 0;
-				left: 0;
-				right: 0;
+			# alert 'hey'
+			# @$el.animate
+			# 	top: 0
+			# 	bottom: 0;
+			# 	left: 0;
+			# 	right: 0;
 
 		render: ->
 			# Set the control size

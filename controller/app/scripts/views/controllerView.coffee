@@ -9,14 +9,25 @@ define [
 	'jquery'
 	'underscore'
 	'backbone'
+	'hammer'
 	'views/controls/switch'
 	'models/controlModel'
 
-], ($, _, Backbone, SwitchView, ControlModel) ->
+], ($, _, Backbone, hammer, SwitchView, ControlModel) ->
 	
 	ControllerView = Backbone.View.extend
 
-		className: 'controller'
+		# className: 'controller'
+
+		el: '#view'
+
+		events:
+			'click':'scroll'
+
+		log: (words) ->
+			console.log words
+
+		currentpane: 0
 
 		initialize: ->
 
@@ -25,7 +36,7 @@ define [
 			# Show the loading screen
 			console.log @model
 			# Register the loaded callback
-			@listenTo @model, 'controller:load', @pickSizes
+			@listenTo @model, 'controller:load', @doLayout
 			# Fetch the data from the model
 			# @model.fetchData()
 
@@ -33,42 +44,94 @@ define [
 
 		render: ->
 
+			@thisPane = 0
+			@panes = 0
+
+			# Clear everything
+
+			# Create the first pane
+			@$el.append '<div class="pane"></div>'
+			@panes += 1
+
 			# Create views for each of the controls
-
-			# Append the views to the dom
 			@model.collection.each (elem,idx) =>
-				# Create a view for the control
-				# if elem.get('type') is 'switch'
-				# 	controlView = new SwitchView
-				# 		model: elem
-				# 		controldims: @controldims
-				# else if elem.get('type') is 'button'
 
-				# else
-				# 	alert 'unrecognized control'
-				# 	
+				# Grab the view prototype from the control
 				ViewProto = elem.get('viewProto')
-				console.log @model.socket
 
+				# Construct the view
 				controlView = new ViewProto
 					model: elem
-					controldims: @controldims
+
+				# Push the pane onto the view
+				@$el.find('.pane').last().append controlView.render()
+
+				# Increment the pane counter
+				@thisPane += 1
+
+				# Check if a new pane is needed
+				@checkPane()
+
+			# Register listeners for navigation
+			@registerEvents()
+
+		checkPane: ->
+			# Make a new pane if the max is hit
+			@log @thisPane
+			if @thisPane == 4
+				# Make a new pane
+				@$el.append '<div class="pane"></div>'
+				# Position
+				pos = 100*@panes+'%'
+				@$el.find('.pane').last().css 
+					left: pos
+				# Increment the number of panes
+				@panes += 1
+				# Reset the pane count
+				@thisPane = 0
 
 
-				@$el.append controlView.render()
 
-			# for controlView in [1..3]
-			# 	controlView = new SwitchView
-			# 		model: new ControlModel
-			# 		controldims: @controldims
-			# 	@$el.append controlView.render()
+		doLayout: ->
+			panes =  Math.ceil @model.collection.length / 4
+			@log panes
 
-			$('#page').html(@el)
+			# Do any layout stuff here. Get the width of the window, etc
+
+			# Call render to add views to the DOM
+			@render()
+
+			# Set the page width
+		
+		scroll: ->
+			@$el.find('.pane').animate
+				left: '-=100%'
+			,200
+
+		registerEvents: ->
+
+			console.error @currentpane += 1
+
+			# Swipe left
+			# hammertime = hammer(@el).on 'swipeleft', (e) =>
+			# 	@scroll()
+
+			# Drag
+			hammertime = hammer(@el).on 'drag', (e) =>
+				@log e
+				@log e.gesture.deltaX / window.outerWidth
+				@hold = -e.gesture.deltaX / window.outerWidth
+				@log @hold
+				@log @$el.find('.pane').last().offset()
+				# @$el.find('.pane').animate
+				# 	left: '-=100%'
+				# ,200
 
 		pickSizes: ->
-			# width = window.outerWidth
-			# console.log width
-			# height = window.outerHeight
+			width = window.outerWidth
+			height = window.outerHeight
+			console.log [width,height]
+
 
 			# if width < 450
 			# 	@controldims = 
@@ -95,7 +158,7 @@ define [
 			# @controldims.width = $('.control').width()
 			# @controldims.height = $('.control').height()
 
-			@render()
+			# @render()
 	
 	
 	return ControllerView
