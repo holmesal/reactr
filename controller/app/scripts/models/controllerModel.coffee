@@ -18,7 +18,8 @@ define [
 	
 	ControllerModel = Backbone.Model.extend
 
-		socketServer: 'http://localhost:7076'
+		# socketServer: 'http://localhost:7076'
+		socketServer: '192.168.2.3:7076'
 
 		urlRoot: 'controller'
 

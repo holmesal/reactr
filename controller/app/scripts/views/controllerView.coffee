@@ -2,6 +2,9 @@
 # Controller View
 # ============
 # Responsible for building the visual aspects of the controller
+# 
+# 
+# Bug - drag a control off the screen. Bahhh
 
 
 define [
@@ -21,13 +24,19 @@ define [
 
 		el: '#view'
 
-		events:
-			'click':'scroll'
+		# events:
+		# 	'window.resize':'calcControlSize'
 
 		log: (words) ->
 			console.log words
 
 		currentpane: 0
+
+		offset: 0
+
+		panes: 0
+
+		fullscreen: false
 
 		initialize: ->
 
@@ -39,13 +48,23 @@ define [
 			@listenTo @model, 'controller:load', @doLayout
 			# Fetch the data from the model
 			# @model.fetchData()
+			
+			# Listen for fullscreen mode
+			# @listenTo @model.@collection, 'fullscreen:on', @fullscreenOn
+
+			# Recalculate control sizes on window resize
+			$(window).on 'resize', =>
+				@calcControlSize()
+
+			# Check if running on an iPhone. If so, make room for the status bar
+			if navigator.standalone
+				@iospadding()
 
 			# @render()
 
 		render: ->
 
 			@thisPane = 0
-			@panes = 0
 
 			# Clear everything
 
@@ -60,11 +79,15 @@ define [
 				ViewProto = elem.get('viewProto')
 
 				# Construct the view
-				controlView = new ViewProto
+				controlView = elem.view = new ViewProto
 					model: elem
+					controllerView: @
 
 				# Push the pane onto the view
 				@$el.find('.pane').last().append controlView.render()
+
+				# Set the size of the control view
+				controlView.setSize()
 
 				# Increment the pane counter
 				@thisPane += 1
@@ -74,6 +97,10 @@ define [
 
 			# Register listeners for navigation
 			@registerEvents()
+
+		calcControlSize: ->
+			@model.collection.each (elem,idx) =>
+				elem.view.setSize()
 
 		checkPane: ->
 			# Make a new pane if the max is hit
@@ -110,22 +137,84 @@ define [
 
 		registerEvents: ->
 
-			console.error @currentpane += 1
+			# console.error @currentpane += 1
 
 			# Swipe left
 			# hammertime = hammer(@el).on 'swipeleft', (e) =>
 			# 	@scroll()
 
-			# Drag
-			hammertime = hammer(@el).on 'drag', (e) =>
-				@log e
-				@log e.gesture.deltaX / window.outerWidth
-				@hold = -e.gesture.deltaX / window.outerWidth
-				@log @hold
-				@log @$el.find('.pane').last().offset()
-				# @$el.find('.pane').animate
-				# 	left: '-=100%'
-				# ,200
+			# On drag start, store the current position of the panes
+			# hammer(@el).on 'dragstart', (e) =>
+			# 	@log @offset
+
+
+			# Drag movement (not a swipe)
+			hammer(@el).on 'drag', (e) =>
+				@log @fullscreen
+				if not @fullscreen
+					# Set the left margin (controlls scroll here)
+					@$el.find('.pane').css
+						'margin-left': -@offset + e.gesture.deltaX
+			
+			# Drag end
+			hammer(@el).on 'dragend', (e) =>
+				if not @fullscreen
+					@log e.gesture.deltaX
+					# If they dragged more than half, go to the next pane (if there is one)
+					if Math.abs(e.gesture.deltaX/window.outerWidth) > 0.5
+						# More than half - which direction to go?
+						if e.gesture.deltaX > 0
+							@lastPane()
+						else
+							@nextPane()
+
+					else
+						console.log 'Dont go anywhere'
+						# Animate back to the same pane
+						@goToPane()
+
+			# Swipe right
+			hammer(@el).on 'swiperight', (e) =>
+				if not @fullscreen
+					# Go to the last pane
+					@lastPane()
+
+			# Swipe left
+			hammer(@el).on 'swipeleft', (e) =>
+				if not @fullscreen
+					# Go to the next pane
+					@nextPane()
+
+		nextPane: ->
+			# Allowed?
+			if @currentpane < @panes - 1
+				# Next pane
+				@currentpane += 1
+				@offset = @currentpane * window.outerWidth
+			# Animate
+			@goToPane()
+
+		lastPane: ->
+			# Allowed?
+			if @currentpane > 0
+				# Previous pane
+				@currentpane -= 1
+				@offset = @currentpane * window.outerWidth
+			# Animate
+			@goToPane()
+
+
+		goToPane: ->
+			# Animate to the current pane
+			# @log @
+			@log -@currentpane * window.outerWidth
+			@log @$el.find('.pane')
+			@$el.find('.pane').animate
+				'margin-left': -@currentpane * window.outerWidth
+			, 200
+
+			# Set the offset
+			# @offset = @currentpane * window.outerWidth
 
 		pickSizes: ->
 			width = window.outerWidth
@@ -159,6 +248,11 @@ define [
 			# @controldims.height = $('.control').height()
 
 			# @render()
+
+		iospadding: ->
+			$('#view').css
+				top: 16
+				height: $('#view').height() - 16
 	
 	
 	return ControllerView
