@@ -1,4 +1,6 @@
-Models = require __dirname+'/../models/Controller'
+Models = require __dirname + '/../models/controller.js'
+
+console.log __dirname
 
 create = (req) ->
 	

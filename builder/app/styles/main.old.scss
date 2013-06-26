@@ -1,0 +1,344 @@
+@import 'sass-bootstrap/lib/bootstrap';
+@import 'compass/css3';
+@import 'http://fonts.googleapis.com/css?family=Lato:100,300,400,900';
+@import 'font-awesome/css/font-awesome.min.css';
+
+$black-glass: rgba(0,0,0,0.2);
+$dark-gray: rgb(32,32,32);
+$faded-gray: rgb(122,122,122);
+$light-button: rgb(49,49,49);
+
+@mixin notextselect{
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+html{
+	// max-width: 100%;
+	width: 100%;
+	height: 100%;
+	// Fix for offscreen flashing!
+	-webkit-transform: translate3d(0,0,0);
+	// min-width: 1000px;
+	// overflow-x: hidden;
+	// background-color: red;
+	// @include background-size(cover);
+	// background: {
+	// 	image: image-url("bg.jpg");
+	// 	repeat: no-repeat;
+	// 	position: center center;
+	// }
+	// background:url(../images/bg.jpg) no-repeat top center fixed;
+}
+
+body{
+	@include notextselect;
+	// max-width: 100%;
+	width: 100%;
+	height: 100%;
+	// overflow: hidden;
+	// overflow-x: hidden;
+	
+	background-color: transparent;
+	font-family: 'Lato', sans-serif;
+	color: white !important;
+	font-weight: 200 !important;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+}
+
+#page{
+	width: 100%;
+	height: 100%;
+	overflow-x: hidden;
+	position: relative;
+}
+
+#app{
+	position: absolute;
+	left: 0px;
+	width: 100%;
+	min-height: 100%;
+	max-height: 100%;
+	// margin-left: 300px;
+	background:url(../images/bg.jpg) no-repeat top center fixed;
+	z-index: 2;
+	overflow: auto;
+}
+
+#sidebar{
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 300px;
+	background-color: $dark-gray;
+	z-index: 1;
+	overflow: auto;
+}
+
+#sidebar-toggle{
+	position: fixed;
+	z-index: 1000;
+	left: 10px;
+	top: 10px;
+	@include transition(0.2s);
+	// background-color: $dark-gray;
+	padding: 10px;
+	// height: 40px;
+	// width: 40px;
+	text-align: center;
+	i{
+		font-size: 16pt;
+		width: 100%;
+		height: 100%;
+	}
+
+	&:hover{
+		cursor: pointer;
+		// background-color: lighten($dark-gray,10%);
+	}
+}
+
+.rotated{
+	@include rotate(45deg);
+}
+
+
+@mixin control{
+	background-color: red;
+	width: 180px;
+	height: 180px;
+	display: inline-block;
+	margin-left: auto;
+	margin-right: auto;
+	margin: 2px;
+	position: relative;
+	@include border-radius(10px);
+	@include transition(0.3s);
+
+	&:hover{
+		cursor: pointer;
+		background-color: lighten($black-glass,60%);
+	}
+
+	.control-icon-container{
+		width: 100%;
+		float: left;
+		margin-top: 35%;
+		font-size: 40px;
+		text-align: center;
+
+
+		.control-icon{
+			width: 100%;
+		}
+	}
+
+	.control-text{
+		width: 100%;
+		padding: 10px;
+		float: left;
+		margin-top: 13%;
+		text-align: center;
+		@include box-sizing(border-box);
+	}
+
+	.control-remove{
+		position: absolute;
+		top: 5px;
+		right: 5px;
+		padding: 5px;
+	}
+}
+
+.controller{
+	width: 100%;
+	max-width: 400px;
+	// text-align: center;
+	// margin-left: auto;
+	// margin-right: auto;
+	overflow: auto;
+}
+
+.control{
+	@include control;
+	background-color: $black-glass;
+}
+
+.control-add{
+	@include control;
+	background-color: $black-glass;
+}
+
+// .control-switch{
+// 	@include control;
+// 	background-color: $black-glass;
+// }
+
+
+
+
+
+.toprow{
+	border-bottom: 1px solid rgba(255,255,255,0.8);
+	padding-bottom: 20px;
+	margin-top: 30px;
+	margin-bottom: 40px;
+}
+
+.ctrlurl{
+	font-size: 30pt;
+}
+
+.right-tabs{
+
+	margin-top: 5px;
+
+	span{
+		margin-left: 40px;
+		font-weight: 300;
+		padding-bottom: 5px;
+		&:hover{
+			border-bottom: 2px solid rgba(255,255,255,0.3);
+			cursor: pointer;
+		}
+	}
+
+	a{
+		color: white;
+		&:hover{
+			text-decoration: none;
+			cursor: pointer;
+		}
+	}
+
+	.active{
+		border-bottom: 2px solid rgba(255,255,255,0.8) !important;
+	}
+}
+
+.tab-hidden{
+	display: none;
+}
+
+.controlbank{
+	text-align: center;
+}
+
+.controlbank .control{
+	float: right;
+}
+
+.navbar{
+	background-color: rgba(255,255,255,0.2) !important;
+}
+
+.console{
+	background-color: #242020;
+	border-radius: 10px;
+	height: 180px;
+}
+
+#control-modal{
+	width: 400px;
+	height: 400px;
+	margin-left: -200px;
+	top: 50%;
+	margin-top: -200px;
+	@include border-radius(20px);
+	@include transition-duration(0.5s);
+}
+
+
+
+// SIDEBAR STYLES
+.sidebar-inner{
+	width: 80%;
+	height: 100%;
+	overflow: auto;
+	// background-color: red;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 30px;
+	@include box-sizing(border-box);
+}
+
+.sidebar-img{
+	// margin-top: 30px;
+	// margin-bottom: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+.sidebar-title{
+	margin-top: 15px;
+	font-size: 12pt;
+}
+
+hr.sidebar{
+	margin-top: 20px;
+	margin-bottom: 10px;
+	border-top: none;
+	border-bottom: 1px solid #979797;
+}
+
+.sidebar-header{
+	font-weight: 900;
+	color: $faded-gray;
+	letter-spacing: 1px;
+	font-size: 9pt;
+}
+
+.sidebar-controllers{
+	text-align: left;
+}
+
+.sidebar-controller{
+	width: 100%;
+	display: block;
+	color: white;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	@include transition-duration(0.1s);
+	// height: 40px;
+	// 
+	&:hover{
+		color: darken(white,30%);
+		// color: white;
+		text-decoration: none;
+		cursor: pointer;
+	}
+
+	i{
+		font-size: 12pt;
+		margin-top: 4px;
+	}
+}
+
+.sidebar-newcontrol{
+	margin-top: 30px;
+	display: block;
+	background-color: $light-button;
+	color: white;
+	display: block;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	width: 100%;
+	@include transition-duration(0.2s);
+	// height: 40px;
+	// 
+	&:hover{
+		background-color: lighten($light-button,20%);
+		color: white;
+		text-decoration: none;
+		cursor: pointer;
+	}
+}
+

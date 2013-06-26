@@ -8,7 +8,7 @@
 
   mongoose = require('mongoose');
 
-  mongoose.connect('mongodb://localhost/reactr');
+  mongoose.connect('mongodb://nodejitsu:d699ef003dd0c8ed6b579c16f9b25acc@dharma.mongohq.com:10092/nodejitsudb4903400600');
 
   controller = require('./routes/controller');
 
@@ -26,7 +26,8 @@
 
   app.io.route('controller', {
     create: function(req) {
-      return console.log('create a new controller');
+      console.log('create a new controller');
+      return controller.create(req);
     },
     read: function(req) {
       console.log('read an existing controller');
@@ -44,8 +45,11 @@
 
   port = 7076;
 
-  app.listen(port);
-
-  console.log('listening on ' + port);
+  app.listen(port, function(err) {
+    if (err) {
+      throw err;
+    }
+    return console.log('listening on ' + port);
+  });
 
 }).call(this);

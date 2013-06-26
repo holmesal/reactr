@@ -1,74 +1,30 @@
-<div class="container-fluid">
+<div class="container">
+	<h1>reactr.co/pockettanks</h1>
+
+	<hr>
+
 	<div class="row-fluid">
-		<div class="toprow span10 offset1">
-			<span class="ctrlurl">reactr.co/pockettanks</span>
-			<div class="right-tabs pull-right">
-				<span class="active"><a class="tab-trigger" data-tab="availableControls">Add Controls</a></span>
-				<span><a class="tab-trigger" data-tab="controllerInfo">Device Information</a></span>
-				<span><a class="tab-trigger" data-tab="logs">Realtime Logs</a></span>
-			</div>
+		<div class="span12">
+			<p class="lead">Your controls: <button class="btn pull-right" data-toggle="modal" href="#availableControls">Add Control</button></p>
+			<div id="controller"></div>
 		</div>
 	</div>
-	<div class="row-fluid">
-		<div class="span5 offset1">
-			<p class="controllerText">Your controls:</p>
-			<div id="controller" class="controller">
-<!-- 				<div class="control-add">
-					<span class="control-icon-container"><i class="control-icon icon-plus"></i></span>
-					<span class="control-text">Add a control</span>
-				</div>
-				<div class="control-add">
-					<span class="control-icon-container"><i class="control-icon icon-plus"></i></span>
-					<span class="control-text">Add a control</span>
-				</div>
-				<div class="control-add">
-					<span class="control-icon-container"><i class="control-icon icon-plus"></i></span>
-					<span class="control-text">Add a control</span>
-				</div> -->
-			</div>
-		</div>
-		<div class="span5">
 
-			<div id="availableControls" class="tab-body"></div>
-			<div id="controllerInfo" class="tab-body"></div>
-			<div id="logs" class="tab-body"></div>
+	<hr>
 
+	<div class="row">
+		<div class="span12" id="controllerInfo">
 		</div>
 	</div>
+
+	<hr>
+
+	<div class="row">
+		<div class="span12">
+			<p class="lead">Realtime logs:</p>
+			<div id="logs"></div>
+		</div>
+	</div>
+
+
 </div>
-
-
-
-
-
-			<!-- <h1>Pocket Tanks</h1>
-			<a class="lead"href="#">reactr.co/pockettanks</a>
-
-			<hr>
-
-			<div class="control">
-				<div class="row-fluid">
-					<div class="span2">
-						<div class="control-icon"><i class="icon-lock">icon</i></div>
-						<a href="#control-modal" role="button" class="btn" data-toggle="modal">Launch modal</a>
-					</div>
-
-					<div class="span10">
-						<span class="control-name">Fire</span>
-						<span class="control-type">Switch</span>
-						<div class="control-datas">
-							<span class="control-data">Boolean: on/off</span>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="console">
-				console
-			</div>
-
-			<div id="control-modal" class="modal hide fade animated fadeInUp">
-				<div class="modal-body">
-					hi
-				</div>
-			</div> -->

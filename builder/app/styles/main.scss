@@ -1,4 +1,5 @@
 @import 'sass-bootstrap/lib/bootstrap';
+@import 'sass-bootstrap/lib/responsive';
 @import 'compass/css3';
 @import 'http://fonts.googleapis.com/css?family=Lato:100,300,400,900';
 @import 'font-awesome/css/font-awesome.min.css';
@@ -42,10 +43,12 @@ body{
 	height: 100%;
 	// overflow: hidden;
 	// overflow-x: hidden;
+
+	padding: 0;
 	
 	background-color: transparent;
 	font-family: 'Lato', sans-serif;
-	color: white !important;
+	// color: white !important;
 	font-weight: 200 !important;
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
@@ -65,7 +68,8 @@ body{
 	min-height: 100%;
 	max-height: 100%;
 	// margin-left: 300px;
-	background:url(../images/bg.jpg) no-repeat top center fixed;
+	// background:url(../images/bg.jpg) no-repeat top center fixed;
+	background-color: white;
 	z-index: 2;
 	overflow: auto;
 }
@@ -79,6 +83,7 @@ body{
 	background-color: $dark-gray;
 	z-index: 1;
 	overflow: auto;
+	color: white;
 }
 
 #sidebar-toggle{
@@ -87,8 +92,12 @@ body{
 	left: 10px;
 	top: 10px;
 	@include transition(0.2s);
-	// background-color: $dark-gray;
+	color: white;
+	background-color: $dark-gray;
 	padding: 10px;
+	margin: 0;
+	height: 20px;
+	width: 20px;
 	// height: 40px;
 	// width: 40px;
 	text-align: center;
@@ -158,11 +167,14 @@ body{
 
 .controller{
 	width: 100%;
-	max-width: 400px;
+	// max-width: 400px;
 	// text-align: center;
 	// margin-left: auto;
 	// margin-right: auto;
 	overflow: auto;
+	height: 100px;
+	@include box-sizing(border-box);
+	background-color: white;
 }
 
 .control{
@@ -222,16 +234,34 @@ body{
 	}
 }
 
-.tab-hidden{
-	display: none;
+// .tab-hidden{
+// 	display: none;
+// }
+
+// .controlbank{
+// 	text-align: center;
+// }
+
+// .controlbank .control{
+// 	float: right;
+// }
+
+#availableControls{
+	height: 80%;
+	max-height: 800px;
 }
 
 .controlbank{
-	text-align: center;
+	padding: 10px;
+	@include box-sizing(border-box);
+
+	overflow: auto;
+	height: 100%;
 }
 
-.controlbank .control{
-	float: right;
+.control-proto{
+	float: left;
+	clear: both;
 }
 
 .navbar{

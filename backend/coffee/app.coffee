@@ -2,7 +2,7 @@ express = require 'express.io'
 app = express().http().io()
 
 mongoose = require 'mongoose'
-mongoose.connect 'mongodb://localhost/reactr'
+mongoose.connect 'mongodb://nodejitsu:d699ef003dd0c8ed6b579c16f9b25acc@dharma.mongohq.com:10092/nodejitsudb4903400600'
 
 # Set up the sessions
 # app.use(express.cookieParser())
@@ -45,7 +45,7 @@ app.io.route 'controller',
 		# req.session.save ->
 		# 	req.io.respond
 		# 		err: req.session
-		# controller.create(req)
+		controller.create(req)
 
 	read: (req) ->
 		console.log 'read an existing controller'
@@ -62,5 +62,6 @@ app.io.route 'controller',
 		console.log req.data
 
 port = 7076
-app.listen port
-console.log 'listening on '+port
+app.listen port, (err) ->
+	throw err if err
+	console.log 'listening on '+port

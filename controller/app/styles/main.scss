@@ -42,14 +42,14 @@ body{
 	font-weight: 300;
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
-	// -webkit-transform: translateZ(0);
+	-webkit-transform: translateZ(0);
 	width: 100%;
 	height: 100%;
 }
 
 html{
 	@include notextselect;
-	// -webkit-transform: translate3d(0,0,0);
+	-webkit-transform: translate3d(0,0,0);
 	background-color: black;
 	height: 100%;
 	width: 100%;
@@ -76,6 +76,7 @@ html{
 	left: 0;
 	background-color: $bgcolor;
 	// font-size: 30pt;
+	-webkit-transform: translateZ(0);
 }
 
 .control-container{
@@ -86,6 +87,7 @@ html{
 	// overflow: auto;
 	// background-color: black;
 	padding: 3px;
+	-webkit-transform: translateZ(0);
 }
 
 .control{
@@ -146,6 +148,16 @@ html{
 		right: 5px;
 		padding: 5px;
 	}
+
+	.control-description{
+		width: 100%;
+		padding: 10px;
+		position: absolute;
+		bottom: 20px;
+		text-align: center;
+		font-size: 30%;
+		@include box-sizing(border-box);
+	}
 }
 
 
@@ -188,6 +200,27 @@ html{
 	background-color: #cdeb8e;
 	@include filter-gradient(#cdeb8e, #a5c956, horizontal);
 	@include background-image(linear-gradient(left top,  #cdeb8e 0%,#a5c956 100%));
+}
+
+.slider .control{
+	@include control;
+	background-color: #a7cfdf;
+	@include filter-gradient(#a7cfdf, #23538a, horizontal);
+	@include background-image(linear-gradient(left top, #a7cfdf 0%,#23538a 100%));
+}
+
+.touchpad .control{
+	@include control;
+	background-color: #f2825b;
+	@include filter-gradient(#f2825b, #f07146, horizontal);
+	@include background-image(linear-gradient(left top, #f2825b 0%,#e55b2b 50%,#f07146 100%));
+}
+
+.gps .control{
+	@include control;
+	background-color: #cfe7fa;
+	@include filter-gradient(#cfe7fa, #6393c1, horizontal);
+	@include background-image(linear-gradient(left top,  #cfe7fa 0%,#6393c1 100%));
 }
 
 // .control{

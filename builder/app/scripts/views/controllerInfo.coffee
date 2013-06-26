@@ -18,16 +18,13 @@ define [
 
 		el: '#controllerInfo'
 
-		className: 'tab-hidden'
+		# className: 'tab-hidden'
 
 		template: handlebars.compile ControllerInfoTemplate
 
 		initialize: ->
 			console.log 'new controller info view'
 			@render()
-
-			# Hide this view
-			@hide()
 
 			# Register change events
 			# console.log @model.controller.collection
@@ -45,12 +42,6 @@ define [
 			@$el.html @template
 				controller: @model.controller.toJSON()
 				collection: @model.controller.collection.toJSON()
-
-		hide: ->
-			@$el.hide()
-
-		show: ->
-			@$el.show()
 	
 	
 	return ControllerInfo

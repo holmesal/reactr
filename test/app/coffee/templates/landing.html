@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Reactr</title>
+    <meta name="description" content="Realtime, web-based controls for connected devices.">
+    <link rel="icon" 
+      type="image/png" 
+      href="img/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Lato:200,300,400' rel='stylesheet' type='text/css'>
+    <link href='css/animate.min.css' rel='stylesheet' type='text/css'>
+    <style>
+
+      html{
+        background: url(img/bg.jpg);
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+      }
+
+      body{
+        background-color: transparent;
+        font-family: 'Lato', sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .logo{
+        /*width: 100px;*/
+        margin-left: 15px;
+        margin-top: 15px;
+      }
+
+      .container{
+        padding-top: 100px;
+        padding-bottom: 200px;
+      }
+
+      .main{
+        margin-left: auto;
+        margin-right: auto;
+        float: none;
+        text-align: center;
+      }
+
+      .big{
+        /*margin-top: 200px;*/
+        color: white;
+        font-weight: 200;
+        font-size: 34pt;
+        text-shadow: 1px 1px 1px black;
+        line-height: 120%;
+      }
+
+      .notsobig{
+        margin-top: 100px;
+        color: white;
+        font-weight: 200;
+        font-size: 18pt;
+        text-shadow: 1px 1px 1px black;
+        line-height: 120%;
+        margin-bottom: 100px;
+      }
+
+      .blueBtn{
+        display: block;
+        width: 200px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        padding: 15px;
+        padding-left: 30px;
+        padding-right: 30px;
+        background-color: #08c;
+        color: white;
+        font-size: 14pt;
+        font-weight: 400;
+        /*transition: 200ms all;*/
+        animation-delay: 1s;
+        -webkit-animation-delay: 1s;
+        -moz-animation-delay: 1s;
+        -ms-animation-delay: 1s;
+        -o-animation-delay: 1s;
+      }
+
+      .blueBtn:hover{
+        text-decoration: none;
+        color: white;
+        background-color: #0079b6;
+        cursor: pointer;
+      }
+
+      .modal{
+        border-radius: 0px;
+      }
+
+      .modalLogo{
+        margin-bottom: 20px;
+      }
+
+      .modal-body{
+        padding-top: 30px;
+        padding-bottom: 50px;
+      }
+
+      .aboutThat{
+        font-size: 20pt;
+        font-weight: 200;
+      }
+
+      .explanation{
+        margin-top: 50px;
+        font-size: 14pt;
+        font-weight: 200;
+        padding-left: 40px;
+        padding-right: 40px;
+        line-height: 120%;
+        margin-bottom: 50px;
+      }
+
+
+    </style>
+
+    <!-- start Mixpanel --><script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"===e.location.protocol?"https:":"http:")+'//cdn.mxpnl.com/libs/mixpanel-2.2.min.js';f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f);b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==
+typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");for(g=0;g<i.length;g++)f(c,i[g]);
+b._i.push([a,e,d])};b.__SV=1.2}})(document,window.mixpanel||[]);
+mixpanel.init("a8580f2f726493c4af6f4547813372b3");</script><!-- end Mixpanel -->
+
+  </head>
+  <body>
+    <img class="logo" src="img/logotext.png"/>
+    <div class="container">
+      <div class="row">
+        <div class="span8 main">
+          <p class="big animated fadeIn">Turn your smartphone into a controller.</p>
+          <p class="notsobig animated fadeIn">Buttons, switches, touchpads, accelerometers, GPS - build a controller in seconds, and send realtime commands to your Arduino, Pi, Imp, or anything else with an internet connection.</p>
+
+          <a class="tryBtn blueBtn animated fadeInUp" data-toggle="modal" data-target="#tryModal">Try it out</a>
+
+          <div id="tryModal" class="modal hide fade" tabindex="-1" role="dialog">
+            <!-- <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+              <h3 id="myModalLabel">Modal header</h3>
+            </div> -->
+            <div class="modal-body">
+              <img class="modalLogo" src="img/logo.png"/>
+              <p class="aboutThat">About that...</p>
+              <p class="explanation">We're hard at work building Reactr, but it's not quite ready yet. If you like, you can hop on our mailing list and be notified when we go into beta.</p>
+              <a href="http://eepurl.com/z3in5" class="mailBtn blueBtn" target="_blank">Notify me</a>
+
+            </div>
+            <!-- <div class="modal-footer">
+              <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+              <button class="btn btn-primary">Save changes</button>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      $(document).on('ready',function(){
+        mixpanel.track("Landing page loaded");
+
+        $('.tryBtn').click(function(){
+          mixpanel.track("Try button clicked");
+        })
+
+        $('.mailBtn').click(function(){
+          mixpanel.track("Mail button clicked");
+        })
+      })
+    </script>
+  </body>
+</html>

@@ -1,9 +1,52 @@
-<div class="controlbank">
-	<p>Available controls:</p>
+<div class="controlbank row-fluid">
+	<div class="span12">
+		<p class="lead">Available controls:</p>
+	</div>
+
+	<div class="row-fluid">
+		<div class="span4">switch icon</div>
+		<div class="span8">
+			<p class="lead">Switch</p>
+			<p>Click to toggle on or off. Sends an event whenever the value changes.</p>
+			<p>Returns value - boolean</p>
+			<p>Supported on iOS, Android, and computers.</p>
+			<button class="btn pull-right control-proto" data-control="switch">Add to controller</button>
+		</div>
+	</div>
+
+	<hr>
+
+	<div class="row-fluid">
+		<div class="span4">accelerometer icon</div>
+		<div class="span8">
+			<p class="lead">Accelerometer</p>
+			<p>Only available on devices with accelerometers. Sends an event whenever the device orientation changes.</p>
+			<p>Returns x-value - float 0 to 1, y-value: float 0 to 1</p>
+			<p>Supported on iOS only. Not available on Android devices or computers</p>
+			<button class="btn pull-right control-proto" data-control="accelerometer">Add to controller</button>
+		</div>
+	</div>
+
+	<hr>
+
+	<div class="row-fluid">
+		<div class="span4">touchpad icon</div>
+		<div class="span8">
+			<p class="lead">Touchpad</p>
+			<p>Touch or click and drag. Sends data whenever a touch or click event occurs.</p>
+			<p>Returns x-value - float 0 to 1, y-value: float 0 to 1</p>
+			<p>Touches supported on iOS and Android. Click-and-drag to mimic touches on computers.</p>
+			<button class="btn pull-right control-proto" data-control="touchpad">Add to controller</button>
+		</div>
+	</div>
+
+	<!-- <div class="span4">
 	<div class="control control-proto control-switch" data-control="switch">
 		<span class="control-icon-container"><i class="control-icon icon-off"></i></span>
 		<span class="control-text">Switch</span>
 	</div>
+	</div>
+	<div class="span7">heyo</div>
 	<div class="control control-proto control-accelerometer" data-control="accelerometer">
 		<span class="control-icon-container"><i class="control-icon icon-rotate-right"></i></span>
 		<span class="control-text">Accelerometer</span>
@@ -23,5 +66,5 @@
 	<div class="control control-proto control-slider" data-control="slider">
 		<span class="control-icon-container"><i class="control-icon icon-resize-vertical"></i></span>
 		<span class="control-text">Slider</span>
-	</div>
+	</div> -->
 </div>

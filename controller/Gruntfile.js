@@ -15,6 +15,9 @@ module.exports = function (grunt) {
     // load all grunt tasks
     require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
+    // load symlink task
+    grunt.loadNpmTasks('grunt-symlink');
+
     // configurable paths
     var yeomanConfig = {
         app: 'app',
@@ -161,10 +164,11 @@ module.exports = function (grunt) {
                 // Options: https://github.com/jrburke/r.js/blob/master/build/example.build.js
                 options: {
                     // `name` and `out` is set by grunt-usemin
-                    baseUrl: 'app/scripts',
+                    // baseUrl: 'app/scripts',
+                    baseUrl: '.tmp/scripts',
                     optimize: 'none',
                     paths: {
-                        'templates': '../../.tmp/scripts/templates'
+                        'templates': '../../app/scripts/templates'
                     },
                     // TODO: Figure out how to make sourcemaps work with grunt-usemin
                     // https://github.com/yeoman/grunt-usemin/issues/30
@@ -245,6 +249,18 @@ module.exports = function (grunt) {
                         'images/{,*/}*.{webp,gif}'
                     ]
                 }]
+            },
+
+            js: {
+                files: [{
+                    expand: true,
+                    dot: true,
+                    cwd: '<%= yeoman.app %>/scripts',
+                    dest: '.tmp/scripts',
+                    src: [
+                        '{,*/}*.js',
+                    ]
+                }]
             }
         },
         bower: {
@@ -260,6 +276,19 @@ module.exports = function (grunt) {
                 files: {
                     '.tmp/scripts/templates.js': ['<%= yeoman.app %>/scripts/templates/*.ejs']
                 }
+            }
+        },
+
+        symlink: {
+            js: {
+                dest: '.tmp/bower_components',
+                relativeSrc: '../app/bower_components',
+                options: {type: 'dir'}
+            },
+            templates: {
+                dest: '.tmp/scripts/templates',
+                relativeSrc: '../app/scripts/templates',
+                options: {type: 'dir'}
             }
         }
     });
@@ -305,13 +334,16 @@ module.exports = function (grunt) {
         'jst',
         'compass:dist',
         'useminPrepare',
+        'copy:js',
+        'symlink:js',
+        'symlink:templates',
         'requirejs',
         'imagemin',
         'htmlmin',
         'concat',
         'cssmin',
         'uglify',
-        'copy',
+        'copy:dist',
         'usemin'
     ]);
 

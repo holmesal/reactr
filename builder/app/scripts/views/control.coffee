@@ -22,23 +22,22 @@ define [
 		template: handlebars.compile ControlTemplate
 
 		# This isn't working because the view isn't being bound to an element so there's othing there when this thing gets attached in the start
-		events: 
-			'click .control-remove': 'removeControl'
+		# events: 
+		# 	'click .control-remove': 'removeControl'
 
 		initialize: ->
 			console.log 'new control view!'
-			@render()
-			@insert()
-
-		insert: ->
-			$('#controller').append @el
 
 		render: ->
-			console.log 'render'
+			console.log 'control render'
 			@$el.html @template @model.toJSON()
 
+		registerEvents: ->
+			@$el.find('.control-remove').click => 
+				@removeControl()
+
 		removeControl: ->
-			@options.controller.collection.remove @model
+			@model.collection.remove @model
 			this.remove()
 			this.unbind()
 			console.log 'removed control!'

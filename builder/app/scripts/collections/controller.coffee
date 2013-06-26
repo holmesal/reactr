@@ -25,7 +25,7 @@ define [
 
 			# @url = 'controller'
 
-			@on 'add',@newModel
+			# @on 'add',@newModel
 
 		newModel: (control) ->
 			console.log control
